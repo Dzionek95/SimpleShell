@@ -1,6 +1,5 @@
 package com.dzionek.simpleshell.shellmanaging;
 
-import com.dzionek.simpleshell.commands.Command;
 import com.dzionek.simpleshell.commands.Commands;
 import com.dzionek.simpleshell.commands.WrongParametersException;
 import com.dzionek.simpleshell.commands.affecting.AffectingCommandsFactory;
