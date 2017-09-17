@@ -59,7 +59,7 @@ public class ShellData {
         this.currentDirectory = currentDirectory;
     }
 
-    String getPromptSign() {
+    public String getPromptSign() {
         return promptSign;
     }
 

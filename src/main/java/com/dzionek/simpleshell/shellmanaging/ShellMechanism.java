@@ -11,17 +11,17 @@ import com.dzionek.simpleshell.user.UserInput;
  * @author Bartlomiej Janik
  * @since 9/16/2017
  */
-class ShellMechanism {
+public class ShellMechanism {
 
     private UserInput userInput;
     private ShellData shellData;
 
-    ShellMechanism(ShellData shellData, UserInput userInput) {
+    public ShellMechanism(ShellData shellData, UserInput userInput) {
         this.userInput = userInput;
         this.shellData = shellData;
     }
 
-    void executeCommandAccordingToUserInput() {
+    public void executeCommandAccordingToUserInput() {
         String[] splitedUserInput = userInput.getUserInput();
         try {
             Commands command = getEnumValueOfCommand(splitedUserInput[0]);

@@ -30,7 +30,6 @@ public class ShellManager {
             userInput.setUserInput(sc.nextLine());
             shellMechanism.executeCommandAccordingToUserInput();
         }
-
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.logging.FileHandler;
  */
 public class CdCommand implements SetterCommand {
 
-    StringBuilder stringBuilder = new StringBuilder();
+    private StringBuilder stringBuilder = new StringBuilder();
 
     public void executeSetter(ShellData shellData, String value) {
         String tempPath = shellData.getCurrentDirectory();
