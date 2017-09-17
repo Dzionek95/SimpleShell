@@ -9,7 +9,7 @@ public class UserInput {
     private String[] userInput;
 
     public void setUserInput(String userInput) {
-        this.userInput = userInput.split(" ");
+        this.userInput = userInput.split("\\s");
     }
 
     public String[] getUserInput() {
