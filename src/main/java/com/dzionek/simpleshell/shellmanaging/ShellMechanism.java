@@ -31,11 +31,11 @@ public class ShellMechanism {
 
             if (isAffectingCommand) {
                 new AffectingCommandsFactory()
-                        .pickProperCommand(shellData,command)
+                        .pickProperCommand(shellData, command)
                         .executeSetter(shellData, splitedUserInput[1]);
             } else {
                 new NonAffectingCommandsFactory()
-                        .pickProperCommand(shellData,command)
+                        .pickProperCommand(shellData, command)
                         .executeBehavior(shellData);
             }
         } catch (WrongParametersException exception) {

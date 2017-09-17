@@ -11,7 +11,6 @@ import java.io.File;
  */
 public class DirCommand implements BehaviorCommand {
 
-
     public void executeBehavior(ShellData shellData) {
         StringBuilder stringBuilder = new StringBuilder();
         File[] filesInDirectory = new File(shellData.getCurrentDirectory()).listFiles();
@@ -29,5 +28,4 @@ public class DirCommand implements BehaviorCommand {
         }
         System.out.println(stringBuilder.toString());
     }
-
 }

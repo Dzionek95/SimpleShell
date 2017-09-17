@@ -17,15 +17,15 @@ public class ShellManager {
     private UserInput userInput;
     private ShellMechanism shellMechanism;
 
-    public ShellManager(ShellData shellData, UserInput userInput, Scanner sc){
+    public ShellManager(ShellData shellData, UserInput userInput, Scanner sc) {
         this.sc = sc;
         this.userInput = userInput;
         this.shellData = shellData;
-        this.shellMechanism = new ShellMechanism(shellData,userInput);
+        this.shellMechanism = new ShellMechanism(shellData, userInput);
     }
 
-    public void startShell(){
-        while(shellData.getIsRunning()){
+    public void startShell() {
+        while (shellData.getIsRunning()) {
             System.out.print(shellData.getPromptSign());
             userInput.setUserInput(sc.nextLine());
             shellMechanism.executeCommandAccordingToUserInput();

@@ -8,7 +8,9 @@ import com.dzionek.simpleshell.shellmanaging.ShellData;
  * @since 9/16/2017
  */
 public class HelpCommand implements BehaviorCommand {
+
     public void executeBehavior(ShellData shellData) {
         System.out.println("Help command");
     }
+
 }

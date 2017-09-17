@@ -20,22 +20,22 @@ import static org.mockito.Mockito.*;
 @Test
 public class AffectingCdCommandTest {
 
-    public void shoudExecuteExecuteSetterOnce(){
+    public void shoudExecuteExecuteSetterOnce() {
         //given
         CdCommand cdCommand = spy(CdCommand.class);
         ShellData shellData = spy(ShellData.class);
         UserInput userInput = mock(UserInput.class);
         Map<Commands, SetterCommand> mapOfAffectingCommands = new EnumMap<>(Commands.class);
-        mapOfAffectingCommands.put(Commands.cd,cdCommand);
-        ShellMechanism shellMechanism = new ShellMechanism(shellData,userInput);
+        mapOfAffectingCommands.put(Commands.cd, cdCommand);
+        ShellMechanism shellMechanism = new ShellMechanism(shellData, userInput);
 
         //when
         when(shellData.getMapOfAffectingCommands()).thenReturn(mapOfAffectingCommands);
-        when(userInput.getUserInput()).thenReturn(new String[]{"cd",".."});
+        when(userInput.getUserInput()).thenReturn(new String[]{"cd", ".."});
 
         //then
         shellMechanism.executeCommandAccordingToUserInput();
-        verify(cdCommand,times(1)).executeSetter(any(),any());
+        verify(cdCommand, times(1)).executeSetter(any(), any());
     }
 
 }

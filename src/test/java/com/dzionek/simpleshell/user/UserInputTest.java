@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 public class UserInputTest {
 
     @Test
-    public void shoudReturnArrayWithLengthTwo(){
+    public void shoudReturnArrayWithLengthTwo() {
         UserInput userInput = new UserInput();
         userInput.setUserInput("prompt $cwd");
-        Assert.assertEquals(userInput.getUserInput().length,2);
+        Assert.assertEquals(userInput.getUserInput().length, 2);
     }
 
 }

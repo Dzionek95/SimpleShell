@@ -9,8 +9,8 @@ import com.dzionek.simpleshell.shellmanaging.ShellData;
  */
 public class ExitCommand implements BehaviorCommand {
 
-
     public void executeBehavior(ShellData shellData) {
         shellData.setRunning(false);
     }
+
 }

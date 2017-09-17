@@ -6,7 +6,7 @@ package com.dzionek.simpleshell.commands;
  */
 public class WrongParametersException extends RuntimeException {
 
-    public WrongParametersException(String message){
+    public WrongParametersException(String message) {
         super(message);
     }
 

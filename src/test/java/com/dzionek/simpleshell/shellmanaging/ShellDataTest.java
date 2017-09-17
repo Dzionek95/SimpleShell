@@ -14,15 +14,15 @@ public class ShellDataTest {
     private ShellData shellData;
 
     @BeforeTest
-    public void setUp(){
+    public void setUp() {
         shellData = new ShellData();
     }
 
-    public void shouldPopulateMapWithFourCommands(){
-        Assert.assertEquals(shellData.getMapOfNonAffectingCommands().size(),4);
+    public void shouldPopulateMapWithFourCommands() {
+        Assert.assertEquals(shellData.getMapOfNonAffectingCommands().size(), 4);
     }
 
-    public void shouldPopulateMapWithTwoCommands(){
-        Assert.assertEquals(shellData.getMapOfAffectingCommands().size(),2);
+    public void shouldPopulateMapWithTwoCommands() {
+        Assert.assertEquals(shellData.getMapOfAffectingCommands().size(), 2);
     }
 }

@@ -5,6 +5,7 @@ import com.dzionek.simpleshell.shellmanaging.ShellData;
 
 /**
  * This interface is for methods that affects Shell data
+ *
  * @author Bartlomiej Janik
  * @since 9/16/2017
  */

@@ -17,44 +17,44 @@ import static org.mockito.Mockito.when;
 @Test
 public class PromptCommandTest {
 
-    public void shoudChangePromptSignToAkuku(){
+    public void shoudChangePromptSignToAkuku() {
         //given
         UserInput userInput = mock(UserInput.class);
         ShellData shellData = new ShellData();
-        ShellMechanism shellMechanism = new ShellMechanism(shellData,userInput);
+        ShellMechanism shellMechanism = new ShellMechanism(shellData, userInput);
 
         //when
-        when(userInput.getUserInput()).thenReturn(new String[]{"prompt","akuku"});
+        when(userInput.getUserInput()).thenReturn(new String[]{"prompt", "akuku"});
 
         //then
         shellMechanism.executeCommandAccordingToUserInput();
-        Assert.assertEquals(shellData.getPromptSign(),"[MyShell] akuku $> ");
+        Assert.assertEquals(shellData.getPromptSign(), "[MyShell] akuku $> ");
     }
 
-    public void shouldChangePromptSignToCurrentPath(){
+    public void shouldChangePromptSignToCurrentPath() {
         //given
         UserInput userInput = mock(UserInput.class);
         ShellData shellData = spy(ShellData.class);
-        ShellMechanism shellMechanism = new ShellMechanism(shellData,userInput);
+        ShellMechanism shellMechanism = new ShellMechanism(shellData, userInput);
 
         //when
         when(shellData.getCurrentDirectory()).thenReturn("C:/Bartek/Jest/Super");
-        when(userInput.getUserInput()).thenReturn(new String[]{"prompt","$cwd"});
+        when(userInput.getUserInput()).thenReturn(new String[]{"prompt", "$cwd"});
 
         shellMechanism.executeCommandAccordingToUserInput();
-        Assert.assertEquals(shellData.getPromptSign(),"[MyShell] C:/Bartek/Jest/Super $> ");
+        Assert.assertEquals(shellData.getPromptSign(), "[MyShell] C:/Bartek/Jest/Super $> ");
     }
 
-    public void shoudResetPromptToDefaultValue(){
+    public void shoudResetPromptToDefaultValue() {
         //given
         UserInput userInput = mock(UserInput.class);
         ShellData shellData = new ShellData();
-        ShellMechanism shellMechanism = new ShellMechanism(shellData,userInput);
+        ShellMechanism shellMechanism = new ShellMechanism(shellData, userInput);
         //when
-        when(userInput.getUserInput()).thenReturn(new String[]{"prompt","reset"});
+        when(userInput.getUserInput()).thenReturn(new String[]{"prompt", "reset"});
         shellData.setPromptSign("C:/Bartek/Jest/Super");
         //then
         shellMechanism.executeCommandAccordingToUserInput();
-        Assert.assertEquals(shellData.getPromptSign(),"[MyShell]  $> ");
+        Assert.assertEquals(shellData.getPromptSign(), "[MyShell]  $> ");
     }
 }

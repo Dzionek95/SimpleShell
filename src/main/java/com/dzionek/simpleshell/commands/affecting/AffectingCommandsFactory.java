@@ -9,6 +9,7 @@ import com.dzionek.simpleshell.shellmanaging.ShellData;
  * @since 9/16/2017
  */
 public class AffectingCommandsFactory implements Factory<SetterCommand> {
+
     @Override
     public SetterCommand pickProperCommand(ShellData shellData, Commands command) {
         return shellData.getMapOfAffectingCommands().get(command);
