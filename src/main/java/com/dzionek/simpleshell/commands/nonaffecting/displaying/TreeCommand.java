@@ -4,6 +4,7 @@ import com.dzionek.simpleshell.commands.nonaffecting.BehaviorCommand;
 import com.dzionek.simpleshell.shellmanaging.ShellData;
 
 import java.io.File;
+import java.util.stream.Stream;
 
 /**
  * @author Bartlomiej Janik
@@ -19,16 +20,15 @@ public class TreeCommand implements BehaviorCommand {
 
     private void buildTreeOfDirectories(String path) {
         File[] tempFileList = new File(path).listFiles();
-
         if (itIsPossibleToBuildTree(tempFileList)) {
-            for (int i = 0; i < tempFileList.length; ++i) {
-                if (tempFileList[i].isDirectory()) {
-                    System.out.println(stringBuilder + tempFileList[i].getName());
-                    stringBuilder.append("-");
-                    buildTreeOfDirectories(tempFileList[i].toString());
-                    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-                }
-            }
+            Stream.of(tempFileList)
+                    .filter(file -> file.isDirectory())
+                    .forEach(directory -> {
+                        System.out.println(stringBuilder + directory.getName());
+                        stringBuilder.append("-");
+                        buildTreeOfDirectories(directory.toString());
+                        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+                    });
         } else {
             System.out.println("Something is wrong or no directories was found");
         }

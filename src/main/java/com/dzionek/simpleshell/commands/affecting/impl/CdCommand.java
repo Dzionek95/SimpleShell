@@ -12,17 +12,19 @@ import java.util.logging.FileHandler;
  */
 public class CdCommand implements SetterCommand {
 
-    private StringBuilder stringBuilder = new StringBuilder();
-
     public void executeSetter(ShellData shellData, String value) {
+        StringBuilder stringBuilder = new StringBuilder();
         String tempPath = shellData.getCurrentDirectory();
         if (value.equals("..")) {
             shellData.setCurrentDirectory(tempPath.substring(0, tempPath.lastIndexOf("\\")));
         } else {
             stringBuilder.append(tempPath + "\\" + value);
-            if (new File(stringBuilder.toString()).isDirectory())
-                shellData.setCurrentDirectory(stringBuilder.toString());
-
+            buildNewCurrentPath(shellData,stringBuilder);
         }
+    }
+
+    private void buildNewCurrentPath(ShellData shellData, StringBuilder stringBuilder){
+        if (new File(stringBuilder.toString()).isDirectory())
+            shellData.setCurrentDirectory(stringBuilder.toString());
     }
 }
