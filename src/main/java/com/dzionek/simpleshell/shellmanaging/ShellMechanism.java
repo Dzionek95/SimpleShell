@@ -12,6 +12,8 @@ import com.dzionek.simpleshell.user.UserInput;
  */
 public class ShellMechanism {
 
+    private static final int MAX_AFFECTING_COMMAND_LENGTH = 2;
+    private static final int MAX_NOT_AFFECTING_COMMAND_LENGTH = 1;
     private UserInput userInput;
     private ShellData shellData;
 
@@ -23,10 +25,9 @@ public class ShellMechanism {
     public void executeCommandAccordingToUserInput() {
         String[] splitedUserInput = userInput.getUserInput();
         try {
+
             Commands command = getEnumValueOfCommand(splitedUserInput[0]);
-
             boolean isAffectingCommand = checkIfCommandIsAffecting(command);
-
             verifyIfAmountOfArgumentsIsProper(splitedUserInput, isAffectingCommand);
 
             if (isAffectingCommand) {
@@ -46,9 +47,17 @@ public class ShellMechanism {
     }
 
     private void verifyIfAmountOfArgumentsIsProper(String[] splitedUserInput, boolean isAffectingCommand) {
-        if (splitedUserInput.length > 2 && isAffectingCommand || splitedUserInput.length > 1
-                && !isAffectingCommand)
+        if (isInputProperForAffectingCommand(splitedUserInput, isAffectingCommand)
+                || isInputProperForNotAffectingCommand(splitedUserInput, isAffectingCommand))
             throw new WrongParametersException("Whops too many parameteres!");
+    }
+
+    private boolean isInputProperForAffectingCommand(String[] splitedUserInput, boolean isAffectingCommand) {
+        return splitedUserInput.length > MAX_AFFECTING_COMMAND_LENGTH && isAffectingCommand;
+    }
+
+    private boolean isInputProperForNotAffectingCommand(String[] splitedUserInput, boolean isAffectingCommand) {
+        return splitedUserInput.length > MAX_NOT_AFFECTING_COMMAND_LENGTH && !isAffectingCommand;
     }
 
     private Commands getEnumValueOfCommand(String command) {
